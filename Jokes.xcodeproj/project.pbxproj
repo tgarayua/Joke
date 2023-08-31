@@ -14,6 +14,7 @@
 		1396B4292AA0E8DB00238D04 /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396B4282AA0E8DB00238D04 /* Joke.swift */; };
 		1396B42B2AA0E93200238D04 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396B42A2AA0E93200238D04 /* NetworkManager.swift */; };
 		1396B42D2AA0EC9600238D04 /* JokeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396B42C2AA0EC9600238D04 /* JokeViewModel.swift */; };
+		1396B42F2AA153FD00238D04 /* AdaptiveImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1396B42E2AA153FD00238D04 /* AdaptiveImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		1396B4282AA0E8DB00238D04 /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 		1396B42A2AA0E93200238D04 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		1396B42C2AA0EC9600238D04 /* JokeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeViewModel.swift; sourceTree = "<group>"; };
+		1396B42E2AA153FD00238D04 /* AdaptiveImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				1396B4172AA0E86F00238D04 /* ContentView.swift */,
+				1396B42E2AA153FD00238D04 /* AdaptiveImage.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				1396B42D2AA0EC9600238D04 /* JokeViewModel.swift in Sources */,
 				1396B42B2AA0E93200238D04 /* NetworkManager.swift in Sources */,
 				1396B4182AA0E86F00238D04 /* ContentView.swift in Sources */,
+				1396B42F2AA153FD00238D04 /* AdaptiveImage.swift in Sources */,
 				1396B4162AA0E86F00238D04 /* JokesApp.swift in Sources */,
 				1396B4292AA0E8DB00238D04 /* Joke.swift in Sources */,
 			);
