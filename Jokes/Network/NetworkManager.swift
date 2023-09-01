@@ -33,7 +33,6 @@ class NetworkManager {
                 } catch {
                     completion(nil)
                 }
-                
             } else {
                 completion(nil)
             }

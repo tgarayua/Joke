@@ -20,8 +20,6 @@ struct SplashView: View {
                     Image("DarkBackground")
                         .resizable()
                         .ignoresSafeArea()
-                    
-                    
                 } else {
                     Image("LightBackground")
                         .resizable()
@@ -43,7 +41,6 @@ struct SplashView: View {
             }
         }
     }
-    
 }
 
 struct SplashView_Previews: PreviewProvider {
