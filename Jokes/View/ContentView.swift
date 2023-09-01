@@ -105,7 +105,7 @@ struct ContentView: View {
                     Text("Welcome to Dad Joke!")
                         .font(.title)
                         .padding()
-                    Text("Press Button To get a joke")
+                    Text("Press Button To Get A Joke")
                         .font(.title3)
                     
                     Spacer()

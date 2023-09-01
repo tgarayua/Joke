@@ -20,9 +20,3 @@ struct AdaptiveImage: View {
         }
     }
 }
-
-//struct AdaptiveImage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AdaptiveImage()
-//    }
-//}
