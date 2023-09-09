@@ -42,36 +42,56 @@ struct ContentView: View {
                             .padding()
                         
                         if showPunchline {
+                            
+                            Spacer()
+                            
                             Text(joke.punchline)
                                 .font(.title)
                                 .padding()
                                 .scaleEffect(showPunchline ? 1.0 : 0.2)
-                            Button("🥊 Punch Line...") {
-                                showPunchline.toggle()
-                            }
-                            .hidden()
-                        } else {
-                            Button("🥊 Punch Line...") {
-                                withAnimation {
-                                    showPunchline.toggle()
-                                }
+                            
+                            Spacer()
+                            
+                            Button("Get new joke!") {
+                                viewModel.fetchRandomJokeVM()
+                                showPunchline = false
                             }
                             .padding()
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                             .background(.orange)
                             .cornerRadius(10)
                             .shadow(color: .yellow, radius: 15, y: 5)
+                            
+                            Spacer()
+                        } else {
+                            VStack {
+                                Spacer()
+                                Button("🥊 Punch Line...") {
+                                    withAnimation {
+                                        showPunchline.toggle()
+                                    }
+                                }
+                                .padding()
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                                .background(.orange)
+                                .cornerRadius(10)
+                                .shadow(color: .yellow, radius: 15, y: 5)
+                                
+                                Spacer()
+                                
+                                Button("Get new joke!") {
+                                    viewModel.fetchRandomJokeVM()
+                                    showPunchline = false
+                                }
+                                .padding()
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                                .background(.orange)
+                                .cornerRadius(10)
+                                .shadow(color: .yellow, radius: 15, y: 5)
+                                
+                                Spacer()
+                            }
                         }
-                        
-                        Button("Get new joke!") {
-                            viewModel.fetchRandomJokeVM()
-                            showPunchline = false
-                        }
-                        .padding()
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .background(.orange)
-                        .cornerRadius(10)
-                        .shadow(color: .yellow, radius: 15, y: 5)
                         
                         Spacer()
                     } else {
@@ -114,8 +134,9 @@ struct ContentView: View {
                             .frame(width: 200, height: 200)
                             .padding()
                         
+                        Spacer()
+                        
                         if showPunchline {
-                            
                             VStack {
                                 Text(joke.setup)
                                     .font(.title2)
@@ -127,6 +148,8 @@ struct ContentView: View {
                                     .scaleEffect(showPunchline ? 1.0 : 0.2)
                             }
                             
+                            Spacer()
+                            
                             Button("Get new joke!") {
                                 viewModel.fetchRandomJokeVM()
                                 showPunchline = false
@@ -136,16 +159,16 @@ struct ContentView: View {
                             .background(.orange)
                             .cornerRadius(10)
                             .shadow(color: .yellow, radius: 15, y: 5)
-                        } else {
                             
+                            Spacer()
+                            
+                        } else {
                             Text(joke.setup)
                                 .font(.title2)
                                 .padding()
                             
-                            
                             VStack {
                                 Spacer()
-                                
                                 Button("🥊 Punch Line...") {
                                     withAnimation {
                                         showPunchline.toggle()
