@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.horizontalSizeClass) var sizeClass
     @StateObject private var viewModel = JokeViewModel()
     @State private var showPunchline = false
     
@@ -25,85 +26,185 @@ struct ContentView: View {
                     .ignoresSafeArea()
             }
             
-            VStack {
-                if let joke = viewModel.joke {
-                    Spacer()
-                    
-                    Image("Dad Joke Logo")
-                        .renderingMode(.original)
-                        .resizable()
-                        .frame(width: 200, height: 200)
-                        .padding()
-                    
-                    Text(joke.setup)
-                        .font(.title2)
-                        .padding()
-                    
-                    if showPunchline {
-                        Text(joke.punchline)
-                            .font(.title)
+            if sizeClass == .compact {
+                VStack {
+                    if let joke = viewModel.joke {
+                        Spacer()
+                        
+                        Image("Dad Joke Logo")
+                            .renderingMode(.original)
+                            .resizable()
+                            .frame(width: 200, height: 200)
                             .padding()
-                            .scaleEffect(showPunchline ? 1.0 : 0.2)
-                    }
-                    
-                    if showPunchline {
-                        Button("🥊 Punch Line...") {
-                            showPunchline.toggle()
-                        }
-                        .hidden()
-                    } else {
-                        Button("🥊 Punch Line...") {
-                            withAnimation {
+                        
+                        Text(joke.setup)
+                            .font(.title2)
+                            .padding()
+                        
+                        if showPunchline {
+                            Text(joke.punchline)
+                                .font(.title)
+                                .padding()
+                                .scaleEffect(showPunchline ? 1.0 : 0.2)
+                            Button("🥊 Punch Line...") {
                                 showPunchline.toggle()
                             }
+                            .hidden()
+                        } else {
+                            Button("🥊 Punch Line...") {
+                                withAnimation {
+                                    showPunchline.toggle()
+                                }
+                            }
+                            .padding()
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                            .background(.orange)
+                            .cornerRadius(10)
+                            .shadow(color: .yellow, radius: 15, y: 5)
+                        }
+                        
+                        Button("Get new joke!") {
+                            viewModel.fetchRandomJokeVM()
+                            showPunchline = false
                         }
                         .padding()
                         .foregroundColor(colorScheme == .dark ? .white : .black)
                         .background(.orange)
                         .cornerRadius(10)
                         .shadow(color: .yellow, radius: 15, y: 5)
-                    }
-
-                    Spacer()
-                    
-                    Button("Get new joke!") {
-                        viewModel.fetchRandomJokeVM()
-                        showPunchline = false
-                    }
-                    .padding()
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                    .background(.orange)
-                    .cornerRadius(10)
-                    .shadow(color: .yellow, radius: 15, y: 5)
-                    
-                    Spacer()
-                } else {
-                    Spacer()
-                    
-                    Image("Dad Joke Logo")
-                        .renderingMode(.original)
-                        .resizable()
-                        .ignoresSafeArea()
-                        .frame(width: 200, height: 200)
-                    Spacer()
-                    Text("Welcome to Dad Joke!")
-                        .font(.title)
+                        
+                        Spacer()
+                    } else {
+                        Spacer()
+                        
+                        Image("Dad Joke Logo")
+                            .renderingMode(.original)
+                            .resizable()
+                            .ignoresSafeArea()
+                            .frame(width: 200, height: 200)
+                        Spacer()
+                        Text("Welcome to Dad Joke!")
+                            .font(.title)
+                            .padding()
+                        Text("Press Button To Get A Joke")
+                            .font(.title3)
+                        
+                        Spacer()
+                        
+                        Button("Get a joke!") {
+                            viewModel.fetchRandomJokeVM()
+                        }
                         .padding()
-                    Text("Press Button To Get A Joke")
-                        .font(.title3)
-                    
-                    Spacer()
-                    
-                    Button("Get a joke!") {
-                        viewModel.fetchRandomJokeVM()
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .background(.orange)
+                        .cornerRadius(10)
+                        .shadow(color: .yellow, radius: 15, y: 5)
+                        
+                        Spacer()
                     }
-                    .padding()
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                    .background(.orange)
-                    .cornerRadius(10)
-                    .shadow(color: .yellow, radius: 15, y: 5)
-                    
-                    Spacer()
+                }
+            } else {
+                HStack {
+                    if let joke = viewModel.joke {
+                        Spacer()
+                        
+                        Image("Dad Joke Logo")
+                            .renderingMode(.original)
+                            .resizable()
+                            .frame(width: 200, height: 200)
+                            .padding()
+                        
+                        if showPunchline {
+                            
+                            VStack {
+                                Text(joke.setup)
+                                    .font(.title2)
+                                    .padding()
+                                
+                                Text(joke.punchline)
+                                    .font(.title)
+                                    .padding()
+                                    .scaleEffect(showPunchline ? 1.0 : 0.2)
+                            }
+                            
+                            Button("Get new joke!") {
+                                viewModel.fetchRandomJokeVM()
+                                showPunchline = false
+                            }
+                            .padding()
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                            .background(.orange)
+                            .cornerRadius(10)
+                            .shadow(color: .yellow, radius: 15, y: 5)
+                        } else {
+                            
+                            Text(joke.setup)
+                                .font(.title2)
+                                .padding()
+                            
+                            
+                            VStack {
+                                Spacer()
+                                
+                                Button("🥊 Punch Line...") {
+                                    withAnimation {
+                                        showPunchline.toggle()
+                                    }
+                                }
+                                .padding()
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                                .background(.orange)
+                                .cornerRadius(10)
+                                .shadow(color: .yellow, radius: 15, y: 5)
+                                
+                                Spacer()
+                                
+                                Button("Get new joke!") {
+                                    viewModel.fetchRandomJokeVM()
+                                    showPunchline = false
+                                }
+                                .padding()
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                                .background(.orange)
+                                .cornerRadius(10)
+                                .shadow(color: .yellow, radius: 15, y: 5)
+                                
+                                Spacer()
+                            }
+                        }
+                        
+                        Spacer()
+                    } else {
+                        Spacer()
+                        
+                        Image("Dad Joke Logo")
+                            .renderingMode(.original)
+                            .resizable()
+                            .ignoresSafeArea()
+                            .frame(width: 200, height: 200)
+                        Spacer()
+                        
+                        VStack {
+                            Text("Welcome to Dad Joke!")
+                                .font(.title)
+                                .padding()
+                            Text("Press Button To Get A Joke")
+                                .font(.title3)
+                        }
+                        
+                        Spacer()
+                        
+                        Button("Get a joke!") {
+                            viewModel.fetchRandomJokeVM()
+                        }
+                        .padding()
+                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                        .background(.orange)
+                        .cornerRadius(10)
+                        .shadow(color: .yellow, radius: 15, y: 5)
+                        
+                        Spacer()
+                    }
                 }
             }
         }
